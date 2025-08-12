@@ -1,8 +1,6 @@
 import os
 import pandas as pd
 from datetime import datetime
-from supabase import create_client, Client
-from dotenv import load_dotenv
 from pathlib import Path
 
 # --- Configuration ---
@@ -16,16 +14,16 @@ TOURNAMENT_NAME_MAP = {
     'uefa-super-cup' : 'Uefa Super Cup'
 }
 
-# --- Setup: Load Environment Variables and Connect to Supabase ---
-load_dotenv()
-url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
+# --- NOTE: This script is deprecated ---
+# The project now uses GitHub-based automation instead of Supabase.
+# See automation/update_from_github.py for the current data update process.
+# This file is kept for reference only.
 
-if not url or not key:
-    print("FATAL ERROR: SUPABASE_URL and SUPABASE_KEY must be set in your environment or a .env file.")
-    exit()
-
-supabase: Client = create_client(url, key)
+print("⚠️  WARNING: This script is deprecated.")
+print("📝 Use the GitHub-based automation instead:")
+print("   cd automation && ./run_github_update.sh")
+print("🔗 See automation/README_automation.md for details")
+exit(1)
 
 # --- Helper Functions ---
 

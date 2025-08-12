@@ -2,6 +2,9 @@
 fpl-venv/
 metabase/
 logs/
+__pycache__/
+*.pyc
+*.pyo
 
 # Environment files with credentials
 .env

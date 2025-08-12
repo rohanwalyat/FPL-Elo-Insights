@@ -3,7 +3,7 @@
 # Start Metabase for FPL ELO Insights
 # Usage: ./start_metabase.sh
 
-METABASE_DIR="/Users/rohanwalyat/Library/Mobile Documents/com~apple~CloudDocs/football-analytics/fpl-elo-insights/metabase"
+METABASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/metabase"
 METABASE_JAR="$METABASE_DIR/metabase.jar"
 PID_FILE="$METABASE_DIR/metabase.pid"
 LOG_FILE="$METABASE_DIR/metabase.log"

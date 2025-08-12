@@ -4,7 +4,7 @@
 # This script pulls latest data from your forked repo and updates the database
 
 # Configuration
-SCRIPT_DIR="/Users/rohanwalyat/Library/Mobile Documents/com~apple~CloudDocs/football-analytics/FPL-Elo-Insights"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOG_FILE="$SCRIPT_DIR/logs/github_update.log"
 PYTHON_SCRIPT="$SCRIPT_DIR/automation/update_from_github.py"
 
@@ -38,6 +38,11 @@ check_git_repo() {
 # Main execution
 main() {
     log_message "=== Starting GitHub-based FPL Data Update ==="
+    
+    # Rotate logs if needed
+    if [ -f "$SCRIPT_DIR/scripts/rotate_logs.sh" ]; then
+        "$SCRIPT_DIR/scripts/rotate_logs.sh" >/dev/null 2>&1
+    fi
     
     # Change to script directory
     cd "$SCRIPT_DIR" || {

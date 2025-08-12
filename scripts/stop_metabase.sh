@@ -3,7 +3,7 @@
 # Stop Metabase for FPL ELO Insights
 # Usage: ./stop_metabase.sh
 
-METABASE_DIR="/Users/rohanwalyat/Library/Mobile Documents/com~apple~CloudDocs/football-analytics/fpl-elo-insights/metabase"
+METABASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/metabase"
 PID_FILE="$METABASE_DIR/metabase.pid"
 
 # Check if PID file exists

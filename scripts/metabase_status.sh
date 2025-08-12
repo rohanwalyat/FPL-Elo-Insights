@@ -3,7 +3,7 @@
 # Check Metabase status for FPL ELO Insights
 # Usage: ./metabase_status.sh
 
-METABASE_DIR="/Users/rohanwalyat/Library/Mobile Documents/com~apple~CloudDocs/football-analytics/fpl-elo-insights/metabase"
+METABASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/metabase"
 PID_FILE="$METABASE_DIR/metabase.pid"
 LOG_FILE="$METABASE_DIR/metabase.log"
 

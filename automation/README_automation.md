@@ -30,13 +30,13 @@ The system automatically:
 
 1. **Test the update script manually:**
    ```bash
-   cd "/Users/rohanwalyat/Library/Mobile Documents/com~apple~CloudDocs/football-analytics/fpl-elo-insights/automation"
+   cd automation
    ./run_github_update.sh
    ```
 
 2. **Set up automated scheduling:**
    ```bash
-   cd "/Users/rohanwalyat/Library/Mobile Documents/com~apple~CloudDocs/football-analytics/fpl-elo-insights/automation"
+   cd automation
    ./setup_github_automation.sh
    ```
    Choose from preset schedules or create a custom one.
