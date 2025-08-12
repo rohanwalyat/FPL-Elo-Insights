@@ -2,3 +2,8 @@
 fpl-venv/
 metabase/
 logs/
+
+# Environment files with credentials
+.env
+.env.local
+.env.production

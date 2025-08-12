@@ -70,9 +70,21 @@ def pull_latest_data():
 def run_psql_command(command):
     """Run a psql command"""
     try:
+        # Set up environment with password from .env file or environment
+        env = os.environ.copy()
+        
+        # Try to load password from .env file
+        env_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+        if os.path.exists(env_file):
+            with open(env_file, 'r') as f:
+                for line in f:
+                    if line.startswith('PGPASSWORD='):
+                        env['PGPASSWORD'] = line.split('=', 1)[1].strip()
+                        break
+        
         result = subprocess.run([
             'psql', '-U', 'postgres', '-d', 'fpl_elo', '-c', command
-        ], capture_output=True, text=True, check=True)
+        ], capture_output=True, text=True, check=True, env=env)
         return True, result.stdout
     except subprocess.CalledProcessError as e:
         return False, e.stderr

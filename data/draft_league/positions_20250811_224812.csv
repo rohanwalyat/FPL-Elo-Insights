@@ -1,0 +1,5 @@
+id,element_count,singular_name,singular_name_short,plural_name,plural_name_short
+1,80,Goalkeeper,GKP,Goalkeepers,GKP
+2,224,Defender,DEF,Defenders,DEF
+3,304,Midfielder,MID,Midfielders,MID
+4,73,Forward,FWD,Forwards,FWD
