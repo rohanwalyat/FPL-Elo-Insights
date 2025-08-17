@@ -8,6 +8,7 @@ import json
 import csv
 import os
 from datetime import datetime
+from dotenv import load_dotenv
 
 def fetch_league_data(league_id):
     """Fetch draft league data"""
@@ -112,10 +113,21 @@ def update_latest_symlinks(archive_dir, timestamp):
             print(f"Skipped {file_base}.{ext}: archive file not found")
 
 def main():
-    league_id = input("Enter your FPL Draft League ID: ").strip()
-    if not league_id:
-        print("League ID is required!")
-        return
+    # Load environment variables
+    load_dotenv()
+    
+    # Get league ID from environment or prompt user
+    league_id = os.getenv('DRAFT_LEAGUE_ID')
+    
+    if not league_id or league_id == 'YOUR_LEAGUE_ID_HERE':
+        print("No valid DRAFT_LEAGUE_ID found in .env file")
+        league_id = input("Enter your FPL Draft League ID: ").strip()
+        if not league_id:
+            print("League ID is required!")
+            return
+        print(f"💡 Tip: Add DRAFT_LEAGUE_ID={league_id} to your .env file for automated runs")
+    else:
+        print(f"Using Draft League ID from .env: {league_id}")
     
     league_data, bootstrap_data, picks_data = fetch_league_data(league_id)
     

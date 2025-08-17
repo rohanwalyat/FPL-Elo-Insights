@@ -111,7 +111,30 @@ crontab -l | grep -v "FPL Data Update" | crontab -
 - PostgreSQL database running
 - Required Python packages (see requirements.txt)
 - Git repository with upstream remote configured
+- **Draft League ID configured in .env file**
 - Optional: Virtual environment in `fpl-venv/`
+
+## Draft League Configuration
+
+To enable automatic draft league data updates, you need to configure your league ID:
+
+### Quick Setup
+```bash
+python scripts/setup_draft_league.py
+```
+
+### Manual Setup
+Add your league ID to the `.env` file:
+```bash
+# FPL Draft League Configuration
+DRAFT_LEAGUE_ID=your_league_id_here
+```
+
+### Finding Your League ID
+1. Go to https://draft.premierleague.com
+2. Navigate to your league
+3. Look at the URL: `https://draft.premierleague.com/leagues/YOUR_ID/status`
+4. Copy the number from the URL
 
 ## Fork Update Schedule
 

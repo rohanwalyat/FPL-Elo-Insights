@@ -196,6 +196,15 @@ class FullUpdateAutomation:
             self.log("⚠ Draft league fetch script not found, skipping", "WARNING")
             return True
         
+        # Check if DRAFT_LEAGUE_ID is configured
+        draft_league_id = os.getenv('DRAFT_LEAGUE_ID')
+        if not draft_league_id or draft_league_id == 'YOUR_LEAGUE_ID_HERE':
+            self.log("⚠ DRAFT_LEAGUE_ID not configured in .env file", "WARNING")
+            self.log("📝 To enable draft league updates, set DRAFT_LEAGUE_ID=your_id in .env", "INFO")
+            return True
+        
+        self.log(f"📊 Using Draft League ID: {draft_league_id}")
+        
         # Run draft league data fetch
         venv_path = self.repo_path / "fpl-venv"
         if venv_path.exists():
