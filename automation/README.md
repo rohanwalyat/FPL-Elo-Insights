@@ -31,7 +31,21 @@ python scripts/setup_draft_league.py
 DRAFT_LEAGUE_ID=your_league_id
 ```
 
-### 3. Run Full Automation
+### 3. Configure Metabase Authentication (Optional)
+
+For automatic dashboard resync after data updates:
+
+```bash
+# Quick setup
+python scripts/setup_metabase_auth.py
+
+# Or manually add to .env file
+METABASE_URL=http://localhost:3000
+METABASE_ADMIN_EMAIL=your_admin_email@example.com
+METABASE_ADMIN_PASSWORD=your_admin_password
+```
+
+### 4. Run Full Automation
 
 ```bash
 # One-time full update
@@ -129,6 +143,11 @@ PGPASSWORD=your_password
 
 # FPL Draft League Configuration
 DRAFT_LEAGUE_ID=your_league_id
+
+# Metabase Configuration (Optional - for automatic resync)
+METABASE_URL=http://localhost:3000
+METABASE_ADMIN_EMAIL=your_admin_email@example.com
+METABASE_ADMIN_PASSWORD=your_admin_password
 ```
 
 ### Git Configuration
