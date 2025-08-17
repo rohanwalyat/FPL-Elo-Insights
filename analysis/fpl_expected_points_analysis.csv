@@ -1,0 +1,25 @@
+player_name,position,team_code,match_id,minutes_played,goals,assists,xg,xa,saves,team_goals_conceded,clearances,blocks,interceptions,tackles_won,recoveries,defensive_contributions_points,actual_bonus_points,bps_score,fpl_total_points,fpl_defensive_contribution,actual_base_points,expected_base_points,actual_total_points,base_points_difference
+A.Becker,Goalkeeper,14,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.01,1,2,2,0,0,0,7,0,0,8,1,0,1,1.0299999999999998,1,-0.029999999999999805
+Adams,Midfielder,91,25-26-prem-liverpool-vs-afc-bournemouth,89,0,0,0.0,0.1,0,3,3,1,4,0,6,2,0,11,4,0,4,4.3,4,-0.2999999999999998
+Brooks,Midfielder,91,25-26-prem-liverpool-vs-afc-bournemouth,84,0,1,0.19,0.19,0,2,0,0,0,2,5,0,0,23,4,0,5,3.5200000000000005,5,1.4799999999999995
+Diakité,Defender,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.0,0,4,6,0,1,2,8,0,0,2,0,0,0,0.0,0,0.0
+Ekitiké,Forward,14,25-26-prem-liverpool-vs-afc-bournemouth,72,1,1,1.14,0.02,0,1,1,0,0,0,0,0,2,36,11,0,9,6.619999999999999,11,2.380000000000001
+Endo,Midfielder,14,25-26-prem-liverpool-vs-afc-bournemouth,31,0,1,0.0,0.0,0,2,1,0,0,1,0,0,0,15,4,0,4,1.0,4,3.0
+Evanilson,Forward,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.29,0.0,0,4,3,0,0,0,2,0,0,-1,1,0,2,3.16,2,-1.1600000000000001
+Frimpong,Defender,14,25-26-prem-liverpool-vs-afc-bournemouth,60,0,0,0.01,0.01,0,0,2,0,1,1,1,0,0,8,1,0,6,6.09,6,-0.08999999999999986
+Gakpo,Midfielder,14,25-26-prem-liverpool-vs-afc-bournemouth,90,1,0,0.2,0.44,0,2,1,0,0,1,6,0,0,32,7,0,7,4.32,7,2.6799999999999997
+Kerkez,Defender,14,25-26-prem-liverpool-vs-afc-bournemouth,60,0,0,0.0,0.01,0,0,5,0,0,1,5,0,0,5,0,0,6,6.029999999999999,6,-0.02999999999999936
+Konaté,Defender,14,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.0,0,2,6,1,0,0,5,0,0,9,1,0,1,1.0,1,0.0
+M.Salah,Midfielder,14,25-26-prem-liverpool-vs-afc-bournemouth,90,1,0,0.26,0.11,0,2,0,1,0,0,9,0,1,35,8,0,7,3.63,8,3.37
+Mac Allister,Midfielder,14,25-26-prem-liverpool-vs-afc-bournemouth,72,0,1,0.03,0.02,0,1,0,0,1,2,2,0,0,27,5,0,5,2.21,5,2.79
+Petrović,Goalkeeper,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.0,6,4,4,0,0,0,8,2,0,10,2,0,4,4.0,4,0.0
+Robertson,Defender,14,25-26-prem-liverpool-vs-afc-bournemouth,31,0,0,0.0,0.04,0,2,2,0,0,0,0,0,0,-4,0,0,1,1.12,1,-0.1200000000000001
+Scott,Midfielder,91,25-26-prem-liverpool-vs-afc-bournemouth,74,0,0,0.0,0.0,0,2,0,0,1,0,2,0,0,6,2,0,2,2.0,2,0.0
+Semenyo,Midfielder,91,25-26-prem-liverpool-vs-afc-bournemouth,90,2,0,0.91,0.02,0,4,0,0,1,1,3,0,3,42,15,0,12,6.609999999999999,15,5.390000000000001
+Senesi,Defender,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.05,0,4,11,0,1,2,2,2,0,0,2,0,2,2.15,2,-0.1499999999999999
+Smith,Defender,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.08,0,3,7,0,1,0,2,0,0,2,3,0,1,1.2400000000000002,1,-0.2400000000000002
+Szoboszlai,Midfielder,14,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.1,0.09,0,2,2,0,0,4,5,0,0,18,4,0,2,2.77,2,-0.77
+Tavernier,Midfielder,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.32,0.06,0,4,6,0,1,3,10,2,0,21,4,0,4,5.78,4,-1.7800000000000002
+Truffert,Defender,91,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.0,0.13,0,4,3,1,0,2,4,0,0,-1,0,0,0,0.3900000000000001,0,-0.3900000000000001
+Virgil,Defender,14,25-26-prem-liverpool-vs-afc-bournemouth,90,0,0,0.18,0.01,0,2,17,1,2,0,4,2,0,10,3,0,3,4.109999999999999,3,-1.1099999999999994
+Wirtz,Midfielder,14,25-26-prem-liverpool-vs-afc-bournemouth,82,0,0,0.14,0.28,0,2,1,0,0,2,6,0,0,14,2,0,2,3.54,2,-1.54

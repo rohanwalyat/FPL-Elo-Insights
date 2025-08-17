@@ -79,7 +79,7 @@ main() {
     # Step 1: Fetch data from FPL Draft API
     log_message "Step 1: Fetching data from FPL Draft API..."
     
-    if echo "$LEAGUE_ID" | $PYTHON_CMD fpl_draft_api.py >> "$LOG_FILE" 2>&1; then
+    if echo "$LEAGUE_ID" | $PYTHON_CMD simple_draft_fetch.py >> "$LOG_FILE" 2>&1; then
         log_message "✓ API data fetch completed successfully"
     else
         log_message "✗ API data fetch failed"

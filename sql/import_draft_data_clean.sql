@@ -31,8 +31,8 @@ CREATE TEMP TABLE temp_managers (
     waiver_pick TEXT
 );
 
--- Import managers CSV into temp table (update path to latest CSV file)
-\copy temp_managers FROM 'data/draft_league/managers_20250811_224812.csv' DELIMITER ',' CSV HEADER;
+-- Import managers CSV into temp table (always uses latest symlink)
+\copy temp_managers FROM 'data/draft_league/latest/managers.csv' DELIMITER ',' CSV HEADER;
 
 -- Insert into draft_managers from temp table (skip incomplete records)
 INSERT INTO draft_managers (id, league_id, entry_name, player_first_name, player_last_name, short_name, waiver_pick, entry_id, joined_time)
@@ -57,8 +57,8 @@ CREATE TEMP TABLE temp_picks (
     status TEXT
 );
 
--- Import picks CSV into temp table (update path to latest CSV file)
-\copy temp_picks FROM 'data/draft_league/picks_20250811_224812.csv' DELIMITER ',' CSV HEADER;
+-- Import picks CSV into temp table (always uses latest symlink)
+\copy temp_picks FROM 'data/draft_league/latest/picks.csv' DELIMITER ',' CSV HEADER;
 
 -- Insert into draft_picks from temp table
 INSERT INTO draft_picks (element_id, league_id, owner, status)

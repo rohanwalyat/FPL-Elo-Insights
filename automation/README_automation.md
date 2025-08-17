@@ -12,6 +12,7 @@ The system automatically:
 
 ## Components
 
+### GitHub-based Data Updates
 1. **`update_from_github.py`** - Main Python script that:
    - Checks for updates in your GitHub repository
    - Pulls latest changes when available
@@ -26,9 +27,39 @@ The system automatically:
 
 3. **`setup_github_automation.sh`** - Interactive setup script for scheduling
 
+### Database Ingestion Automation
+4. **`database_ingestion.py`** - Advanced ingestion script that:
+   - Automatically detects latest season data (2025-2026 format)
+   - Handles both main season and draft league data
+   - Performs intelligent column mapping and data type conversion
+   - Provides comprehensive error handling and logging
+
+5. **`run_database_ingestion.sh`** - Complete automation wrapper that:
+   - Checks all prerequisites (database, Python, data files)
+   - Activates virtual environment automatically
+   - Runs database ingestion with full logging
+   - Provides database summary after completion
+
 ## Quick Setup
 
-1. **Test the update script manually:**
+### 🎯 Complete End-to-End Automation (RECOMMENDED)
+**One command to handle everything:**
+```bash
+cd automation
+./run_full_update.sh
+```
+
+This handles: GitHub updates → Draft league data → Database ingestion → Summary
+
+**For detailed documentation:**
+```bash
+cat automation/README_COMPLETE_AUTOMATION.md
+```
+
+### Individual Components (Advanced Users)
+
+#### GitHub-based Updates
+1. **Test the GitHub update script manually:**
    ```bash
    cd automation
    ./run_github_update.sh
@@ -39,7 +70,27 @@ The system automatically:
    cd automation
    ./setup_github_automation.sh
    ```
-   Choose from preset schedules or create a custom one.
+
+#### Database Ingestion
+1. **Test database ingestion manually:**
+   ```bash
+   cd automation
+   ./run_database_ingestion.sh
+   ```
+
+2. **For detailed documentation:**
+   ```bash
+   cat automation/README_DATABASE_INGESTION.md
+   ```
+
+#### Legacy Combined Workflow
+```bash
+# Pull latest data from GitHub
+./automation/run_github_update.sh
+
+# Import updated data to database  
+./automation/run_database_ingestion.sh
+```
 
 ## Recommended Schedules
 
