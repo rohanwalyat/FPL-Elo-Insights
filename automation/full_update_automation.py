@@ -114,37 +114,38 @@ class FullUpdateAutomation:
         return True
 
     def check_for_github_updates(self):
-        """Check if there are updates available from GitHub fork"""
-        self.log("=== Checking for GitHub Updates ===")
+        """Check if there are updates available from GitHub upstream fork"""
+        self.log("=== Checking for GitHub Updates from Upstream Fork ===")
         
-        # Fetch latest from remote
+        # Fetch latest from upstream fork
         success, _ = self.run_command(
-            "git fetch origin",
-            "Fetching latest changes from remote"
+            "git fetch upstream",
+            "Fetching latest changes from upstream fork"
         )
         if not success:
-            self.log("❌ Failed to fetch from remote", "ERROR")
+            self.log("❌ Failed to fetch from upstream fork", "ERROR")
             return False
         
-        # Check if local is behind remote
+        # Check if local main is behind upstream main
         success, output = self.run_command(
-            "git status -uno",
-            "Checking repository status"
+            "git log HEAD..upstream/main --oneline",
+            "Checking for new commits in upstream"
         )
         
-        if success and "behind" in output:
-            self.log("📦 Updates available from GitHub fork")
+        if success and output.strip():
+            self.log("📦 Updates available from upstream fork")
+            self.log(f"New commits found:\n{output.strip()}")
             return True
-        elif success and "up to date" in output:
-            self.log("✅ Repository is up to date")
+        elif success:
+            self.log("✅ Repository is up to date with upstream")
             return False
         else:
             self.log("⚠ Unable to determine update status", "WARNING")
             return False
 
     def pull_github_updates(self):
-        """Pull latest updates from GitHub fork"""
-        self.log("=== Pulling GitHub Updates ===")
+        """Pull latest updates from GitHub upstream fork"""
+        self.log("=== Pulling GitHub Updates from Upstream ===")
         
         # Check for local changes and stash if needed
         success, status = self.run_command(
@@ -162,27 +163,27 @@ class FullUpdateAutomation:
                 self.log("❌ Failed to stash changes", "ERROR")
                 return False
         
-        # Pull latest changes
+        # Merge latest changes from upstream
         success, output = self.run_command(
-            "git pull origin main",
-            "Pulling latest changes from main branch"
+            "git merge upstream/main",
+            "Merging latest changes from upstream main branch"
         )
         
         if not success:
             # Try master branch
             success, output = self.run_command(
-                "git pull origin master",
-                "Pulling latest changes from master branch"
+                "git merge upstream/master",
+                "Merging latest changes from upstream master branch"
             )
         
         if success:
-            self.log("✅ Successfully pulled latest changes from GitHub")
+            self.log("✅ Successfully merged latest changes from upstream")
             self.update_summary['github_updated'] = True
-            self.update_summary['steps_completed'].append('GitHub Update')
+            self.update_summary['steps_completed'].append('Upstream Update')
             return True
         else:
-            self.log("❌ Failed to pull GitHub updates", "ERROR")
-            self.update_summary['errors'].append('GitHub pull failed')
+            self.log("❌ Failed to merge upstream updates", "ERROR")
+            self.update_summary['errors'].append('Upstream merge failed')
             return False
 
     def update_draft_league_data(self):
