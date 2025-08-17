@@ -1,0 +1,8 @@
+{
+    "python.defaultInterpreterPath": "/Users/rohanwalyat/anaconda3/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "jupyter.kernels.excludePythonEnvironments": [],
+    "jupyter.kernels.filter": [],
+    "python.envFile": "${workspaceFolder}/.env",
+    "jupyter.preferredRemoteKernelIdForLocalConnection": "fpl-elo"
+}

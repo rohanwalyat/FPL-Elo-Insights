@@ -1,0 +1,21 @@
+code,id,name,pulse_id,short_name
+3,1,Arsenal,1,ARS
+7,2,Aston Villa,2,AVL
+90,3,Burnley,43,BUR
+91,4,Bournemouth,127,BOU
+94,5,Brentford,130,BRE
+36,6,Brighton,131,BHA
+8,7,Chelsea,4,CHE
+31,8,Crystal Palace,6,CRY
+11,9,Everton,7,EVE
+54,10,Fulham,34,FUL
+2,11,Leeds,9,LEE
+14,12,Liverpool,10,LIV
+43,13,Man City,11,MCI
+1,14,Man Utd,12,MUN
+4,15,Newcastle,23,NEW
+17,16,Nott'm Forest,15,NFO
+56,17,Sunderland,29,SUN
+6,18,Spurs,21,TOT
+21,19,West Ham,25,WHU
+39,20,Wolves,38,WOL
