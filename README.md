@@ -1,13 +1,62 @@
-# FPL-Elo-Insights: A Comprehensive FPL Dataset
+# FPL Core Insights: A Comprehensive FPL Dataset
 
-Welcome to FPL-Elo-Insights, a meticulously curated dataset designed to empower your Fantasy Premier League analysis beyond the surface. This project uniquely links official FPL player data with detailed match statistics and historical team Elo ratings, allowing for unparalleled insights.
+Welcome to **FPL Core Insights**, the data engine powering [fplcore.com](https://fplcore.com).
+
+This project uniquely links official FPL player data with detailed match statistics and historical team Elo ratings, allowing for **unparalleled insights into player and team performance.**
 
 It combines three powerful data sources:
-1.  **Official FPL API Data**: All the essential player points, costs, form, ownership, xG/xA, and more.
-2.  **Manually Curated Match Stats (Opta-like)**: Deep-dive performance metrics for every player and match.
-3.  **ClubElo.com Elo Ratings**: Historical and current team strength ratings for robust fixture analysis.
+1.  **Official FPL API Data** – Player points, costs, form, ownership, xG/xA, and more.
+2.  **Manually Curated Match Stats (Opta-like)** – Deep-dive performance metrics for every player and match.
+3.  **ClubElo.com Elo Ratings** – Historical and current team strength ratings for robust fixture analysis.
+
+---
+
+## 💬 Join the Community
+
+Join the official **[FPL Core Discord](https://discord.gg/PgHqhv4v)** — where data enthusiasts and football fans collide.
+
+Whether you're using the [FPL Core platform](https://fplcore.com), building your own tools, or just talking football, you'll find a home here.
+
+## 💬 Join the League
+
+We’ve created an official **FPL Core** league for anyone using this data.
+
+It’s a simple way to:
+- Compare performance
+- See who’s actually extracting value from the insights
+- Have a bit of competitive fun along the way
+
+👉 **[Join the FPL Core League](https://fantasy.premierleague.com/leagues/auto-join/jxhhge)**
+
+## Data Updates
+
+The dataset is automatically refreshed twice daily at:
+- **5:00 AM UTC**
+- **5:00 PM UTC**
+
+All data is provided in **CSV format** for easy import into any data analysis tool.
+
+## Using The Data
+Feel free to use the data from this repository in whatever way works best for you—whether for your website, blog posts, or other projects. If possible, I’d greatly appreciate it if you could include a link back to this repository as the data source.
+
+Inspired by the amazing work of [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League), this project aims to continue the spirit of open data in the FPL community. If you build something cool, let me know – I'd be happy to feature a link to your project!
+</details>
 
 ## What's New for the 2025/26 Season?
+
+<details>
+<summary>Click Here to Expand</summary>
+
+## player_gameweek_stats 
+This table is auto-generated to provide discrete, analysis-ready stats for a single gameweek. It solves the problem of cumulative data in the playerstats table.
+For example, the goals_scored column in this file shows the goals a player scored only in that gameweek, not their season total. It is the recommended source for analyzing week-by-week player performance.
+It contains three types of data:
+Calculated Performance Stats: Columns like goals_scored, assists, bonus, bps, minutes, etc., are calculated by subtracting the previous gameweek's total from the current one.
+Gameweek-Specific Stats: Columns like event_points are taken directly as they already represent the single gameweek.
+Snapshot Stats: Columns like now_cost, selected_by_percent, and form represent the player's status at the deadline of that gameweek.
+This file uses the same column structure as playerstats for consistency.
+Links:
+id links to the player_id in the players table.
 
 This season, FPL-Elo-Insights is taking a massive leap forward, pushing beyond what inspired this project to deliver an even richer analytical experience.
 
@@ -25,39 +74,53 @@ Following the new FPL rules that reward defensive contributions, I've integrated
 ### 📂 New & Improved Data Structure
 The data is now organized into a more intuitive structure to make analysis easier than ever. You can access data sliced in different ways depending on your needs.
 
-## Data Updates
-
-The dataset is automatically refreshed twice daily at:
-- **5:00 AM UTC**
-- **5:00 PM UTC**
-
-All data is provided in **CSV format** for easy import into any data analysis tool.
+</details>
 
 ## Data Structure Overview
+<details>
+<summary>Click here to expand</summary>
 
-The data for the season is organized into three main categories within the `data/2025-2026/` directory:
+The data for each season is organized within a dedicated directory, such as `data/2025-2026/`. The structure is designed to provide both high-level summaries and granular, point-in-time snapshots.
 
-1.  **Master Files**
-    *   **Location**: `/`
-    *   **Description**: These are the main, always-up-to-date files for the entire season.
-    *   **Files**: `players.csv`, `teams.csv`, `playerstats.csv`, `gameweeks.csv`
+### 1. Master Files (Season-Level Data)
 
-2.  **By Gameweek**
-    *   **Location**: `By Gameweek/GW{x}/`
-    *   **Description**: Contains a complete snapshot of all data relevant to a specific gameweek.
-    *   **Files**: `fixtures.csv`, `matches.csv`, `playermatchstats.csv`, `playerstats.csv`, `players.csv`, `teams.csv`
+These files are located at the root of the season's directory (e.g., `data/2025-2026/`) and contain the most current, aggregated data for the entire season.
 
-3.  **By Tournament**
-    *   **Location**: `By Tournament/{tournament_name}/`
-    *   **Description**: Contains a self-contained snapshot of all data for a specific tournament.
-    *   **Files**: `fixtures.csv`, `matches.csv`, `playermatchstats.csv`, `playerstats.csv`, `players.csv`, `teams.csv`
+*   **Location**: `/data/{season}/`
+*   **Description**: The primary, always-up-to-date data files.
+*   **Files**:
+    *   `players.csv`: A comprehensive list of all players for the season.
+    *   `teams.csv`: Details for all teams participating in the season.
+    *   `playerstats.csv`: Aggregated season-total statistics for every player.
+    *   `gameweek_summaries.csv`: A summary of key events and data for each gameweek.
 
-## Using The Data
-Feel free to use the data from this repository in whatever way works best for you—whether for your website, blog posts, or other projects. If possible, I’d greatly appreciate it if you could include a link back to this repository as the data source.
+### 2. By Gameweek (Gameweek-Specific Snapshots)
 
-Inspired by the amazing work of [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League), this project aims to continue the spirit of open data in the FPL community. If you build something cool, let me know – I'd be happy to feature a link to your project!
+This directory contains snapshots of the data as it appeared at the end of each specific gameweek. This is useful for historical analysis or replaying a specific point in the season.
+
+*   **Location**: `/data/{season}/By Gameweek/GW{x}/`
+*   **Description**: A complete data snapshot for a given gameweek (`GW`).
+*   **Files**:
+    *   `fixtures.csv`: All scheduled fixtures relevant to that gameweek.
+    *   `matches.csv`: Detailed results and data for all matches played up to that gameweek.
+    *   `players.csv`: The state of the players list at the end of the gameweek.
+    *   `teams.csv`: The state of the teams list at the end of the gameweek.
+    *   `playerstats.csv`: Cumulative player statistics up to that gameweek.
+    *   `playermatchstats.csv`: Individual player performance for each match within that gameweek.
+    *   `player_gameweek_stats.csv`: A summary of each player's performance specifically for that gameweek.
+
+### 3. By Tournament (Tournament-Specific Data)
+
+This section isolates the data for each individual tournament, providing a self-contained view of all relevant matches, players, and stats for that competition.
+
+*   **Location**: `/data/{season}/By Tournament/{tournament_name}/GW{x}/`
+*   **Description**: Data filtered to include only information relevant to a specific tournament (e.g., `Premier League`, `EFL Cup`). The data is further organized by the gameweek in which the tournament's matches occurred.
+*   **Files**: The file structure within each tournament's gameweek folder is identical to the main "By Gameweek" snapshots, but it only contains data related to that specific tournament.
 
 ## Data Tables Explained
+
+<details>
+<summary>Click Here to Expand</summary>
 
 ### `matches`
 
@@ -315,3 +378,6 @@ This table contains information about each team from the FPL API.
 
 **Links:**
 *   `id` links to `home_team` and `away_team` in the `matches` and `fixtures` tables.
+
+
+</details>
