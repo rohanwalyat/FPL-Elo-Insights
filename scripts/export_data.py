@@ -1,4 +1,5 @@
-# - Hi future me, remember this wont pull friendlies or gameweek: 0, a value that doesn't exist in your main gameweeks table. So ive filter them out remember when youre working on that next season
+# - Friendlies and GW0 matches are filtered out. FA Cup added to tournament map.
+# - Matches with missing gameweeks are inferred from kickoff_time vs GW deadlines.
 
 import os
 import sys
@@ -14,13 +15,14 @@ TOURNAMENT_NAME_MAP = {
     'friendly': 'Friendlies',
     'premier-league': 'Premier League',
     'champions-league': 'Champions League',
+    '25-26-cl': 'Champions League',
     'prem': 'Premier League',
     'community-shield': 'Community Shield',
     'uefa-super-cup': 'Uefa Super Cup',
     'efl-cup' : 'EFL Cup',
-    'champions-league': 'Champions League',
     'europa-league': 'Europa League',
-    'conference-league' : 'Conference League'
+    'conference-league' : 'Conference League',
+    'fa-cup': 'FA Cup'
 }
 
 # --- Logging Setup ---
@@ -298,6 +300,33 @@ def main():
         return None
     matches_df['tournament'] = matches_df['match_id'].apply(extract_tournament_slug)
 
+    # --- Infer missing gameweeks from kickoff_time ---
+    missing_gw_count = matches_df['gameweek'].isna().sum()
+    if missing_gw_count > 0 and 'kickoff_time' in matches_df.columns:
+        logger.info(f"\nInferring gameweek for {missing_gw_count} matches with missing gameweek...")
+        gw_deadlines = gameweeks_df[['id', 'deadline_time']].copy()
+        gw_deadlines['deadline_time'] = pd.to_datetime(gw_deadlines['deadline_time'], utc=True)
+        gw_deadlines = gw_deadlines.sort_values('deadline_time')
+
+        def infer_gameweek(kickoff):
+            if pd.isna(kickoff) or kickoff is None:
+                return None
+            try:
+                kickoff_dt = pd.to_datetime(kickoff, utc=True)
+            except Exception:
+                return None
+            # Find the latest deadline that is before or equal to the kickoff
+            valid = gw_deadlines[gw_deadlines['deadline_time'] <= kickoff_dt]
+            if valid.empty:
+                return gw_deadlines['id'].iloc[0]  # Before first deadline, assign GW1
+            return valid['id'].iloc[-1]
+
+        mask = matches_df['gameweek'].isna()
+        matches_df.loc[mask, 'gameweek'] = matches_df.loc[mask, 'kickoff_time'].apply(infer_gameweek)
+        inferred = missing_gw_count - matches_df['gameweek'].isna().sum()
+        logger.info(f"  > Inferred gameweek for {inferred} matches.")
+
+    # --- Filter out friendlies and GW0 ---
     logger.info("\nFiltering out friendlies and pre-season (GW0) matches...")
     initial_match_count = len(matches_df)
     matches_df = matches_df[(matches_df['gameweek'] != 0) & (matches_df['tournament'] != 'friendly')]
