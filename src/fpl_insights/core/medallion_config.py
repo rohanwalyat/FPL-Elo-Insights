@@ -63,7 +63,7 @@ class MedallionConfig:
                 'host': 'localhost',
                 'database': 'fpl_elo',
                 'user': 'postgres',
-                'password': os.getenv('POSTGRES_PASSWORD', 'Simonsays@123')
+                'password': os.getenv('POSTGRES_PASSWORD', '')
             }
     
     def get_layer_path(self, layer: DataLayer, source: DataSource = None, date_partition: str = None) -> Path:
