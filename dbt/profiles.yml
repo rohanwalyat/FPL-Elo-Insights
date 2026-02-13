@@ -1,0 +1,12 @@
+fpl_analytics:
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('PGHOST', 'localhost') }}"
+      user: "{{ env_var('PGUSER', 'postgres') }}"
+      password: "{{ env_var('PGPASSWORD') }}"
+      port: 5432
+      dbname: "{{ env_var('PGDATABASE', 'fpl_elo') }}"
+      schema: public # Default schema, specific models override this
+      threads: 4
+  target: dev

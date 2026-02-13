@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: bronze_fpl
+    schema: bronze
+    tables:
+      - name: fpl_api_bootstrap-static_elements
+      - name: fpl_api_bootstrap-static_teams
+      - name: fpl_api_bootstrap-static_events
+      - name: fpl_api_fixtures
+      - name: betting_odds_h2h_odds
+      - name: betting_odds_totals_odds
+      - name: draft_league_element-status
+      - name: draft_league_league-details
+      - name: draft_league_bootstrap-static_elements
+      - name: fpl_api_bootstrap-static
+
+  - name: public
+    schema: public
+    tables:
+      - name: ml_projections

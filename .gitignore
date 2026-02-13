@@ -10,3 +10,6 @@ __pycache__/
 .env
 .env.local
 .env.production
+dbt-venv/
+data/
+.streamlit/
